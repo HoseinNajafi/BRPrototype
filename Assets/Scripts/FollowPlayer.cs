@@ -5,13 +5,14 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
-    public Transform PlayerTransform;
-
+    public PlayerController PlayerTransform;
+    public float CameraSpeed;
+    Vector3 v= Vector3.zero;
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = PlayerTransform.position;
+        transform.position = Vector3.SmoothDamp(transform.position, PlayerTransform.CamPoint, ref v, 0.3f);//  CameraSpeed*Time.deltaTime);
     }
     
     /*
